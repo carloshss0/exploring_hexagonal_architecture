@@ -13,6 +13,7 @@ Probably it will take a while to fully grasp hexagonal architecture and Go, but 
 After this, make sure to create the table in the sqlite3.
 - Run the command: `docker exec -it appproduct`
 - Inside the container, run: `touch sqlite.db` then `sqlite3 sqlite.db`.
+
 Now create the table:
 - `CREATE TABLE products (
     id string PRIMARY KEY,
