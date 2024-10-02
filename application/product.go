@@ -25,6 +25,7 @@ type ProductServiceInterface interface {
 	Create(name string, price float64) (ProductInterface, error)
 	Enable(product ProductInterface) (ProductInterface, error)
 	Disable(product ProductInterface) (ProductInterface, error)
+	UpdatePrice(product ProductInterface, newPrice float64) (ProductInterface, error)
 }
 
 type ProductReader interface {

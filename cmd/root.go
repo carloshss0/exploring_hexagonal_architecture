@@ -12,7 +12,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var db, _ = sql.Open("sqlite3", "db.sqlite")
+var db, _ = sql.Open("sqlite3", "sqlite.db")
 var productDb = dbInfra.NewProductDb(db)
 var productService = application.ProductService{Persistence: productDb}
 
@@ -51,5 +51,3 @@ func init() {
 	// when this action is called directly.
 	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
-
-

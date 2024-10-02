@@ -1,5 +1,7 @@
 package application
 
+import "errors"
+
 type ProductService struct {
 	Persistence ProductPersistenceInterface
 }
@@ -68,4 +70,19 @@ func (s *ProductService) Disable(product ProductInterface) (ProductInterface, er
 		return &Product{}, err
 	}
 	return result, nil
+}
+
+func (s *ProductService) UpdatePrice(product ProductInterface, newPrice float64) (ProductInterface, error) {
+	if newPrice < 0 {
+		return nil, errors.New("the price must be greater than or equal to zero")
+	}
+
+	product.(*Product).Price = newPrice
+
+	updatedProduct, err := s.Persistence.Save(product)
+	if err != nil {
+		return nil, err
+	}
+
+	return updatedProduct, nil
 }
